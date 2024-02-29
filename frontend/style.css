@@ -93,12 +93,13 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+
 .header {
-  background-image: url("assets/header.jpg");
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
+    background-image: url("assets/header.jpg");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 
 nav {
   position: fixed;
@@ -676,6 +677,24 @@ body {
 .input__btn button:hover {
   background-color: #0056b3;
 }
-.hidden{
-  display:none;
+
+
+.hidden {
+  display: none;
+
+  display: none;
+  position: absolute;
+  z-index: 1;
+}
+
+
+.bookingFormContainer {
+  background-color: rgb(196, 118, 17);
+  border: 1px solid #e9e9e9;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 350px;
+  margin: 0 auto;
+  height: auto;
 }
