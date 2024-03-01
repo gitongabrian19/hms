@@ -1,6 +1,5 @@
 function showFormBookNow(){
-    var bookingForm = document.getElementById("bookingForm");
-    bookingForm.classList.toggle("hidden");
+    document.getElementById("bookingForm").classList.toggle("hidden");
   }
 
 function submitForm() {
@@ -19,14 +18,14 @@ function submitForm() {
     })
     .then(response => {
         if (response.ok) {
-            alert('Booking successful!');
+            alert('Booking successful✔️💕');
             document.getElementById('name').value = '';
             document.getElementById('phone').value = '';
             document.getElementById('check-in').value = '';
             document.getElementById('check-out').value = '';
             document.getElementById('guest').value = '';
         } else {
-            alert('Booking failed!');
+            alert('Booking failed❌');
         }
     })
     .catch(error => console.error('Error:', error));
