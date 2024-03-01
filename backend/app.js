@@ -3,12 +3,15 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const bodyParser = require('body-parser');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const connectDb = require('./public/javascripts/databaseConn');/// imported database connection
-var submit = require("./routes/bookNowSubmitRoute"); // imported the booknow route
+var submitBookNow = require("./routes/bookNowSubmitRoute"); // imported the booknow route
 var cors = require('cors'); // imported cors
+
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+
 
 var app = express();
 connectDb();
@@ -17,7 +20,7 @@ connectDb();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use(bodyParser.json); //added body parser
+// app.use(bodyParser.json()); //added body parser
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -35,8 +38,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 //my routes
-app.options("/submit", cors(corsOptions));
-app.post("/submit",cors(corsOptions), submit);
+app.options("/submitBookNow", cors(corsOptions));
+app.post("/submitBookNow",cors(corsOptions), submitBookNow);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -53,7 +56,12 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  if (req.accepts('html')) {
+    res.render('error');
+    return;
+  }
+  res.json({ error: err.message || 'Internal Server Error' });
 });
+
 
 module.exports = app;
