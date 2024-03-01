@@ -12,6 +12,7 @@ let connection = mysql.createConnection({
 submit.post('/submit', (req, res) => {
     const { name, phone, checkIn, checkOut, guests } = req.body;
     console.log(req.body);
+    alert('Data received!');
 
     const sql = `INSERT INTO booknow (name, phone, checkIn, checkOut, guests) VALUES (?, ?, ?,?,?)`;
     connection.query(sql, [name, phone, checkIn, checkOut, guests], (err, result) => {

@@ -1,8 +1,10 @@
 function showFormBookNow(){
     document.getElementById("bookingForm").classList.toggle("hidden");
+    alert("Form displayed!");
   }
 
 function submitForm() {
+    alert("submitForm clicked")
     const name = document.getElementById('name').value;
     const phone = document.getElementById('phone').value;
     const checkIn = document.getElementById('check-in').value;
