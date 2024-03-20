@@ -1,6 +1,5 @@
 function showFormBookNow(){
     document.getElementById("bookingForm").classList.toggle("hidden");
-    alert("Form displayed!");
   }
 
 function submitForm() {
@@ -17,7 +16,7 @@ function submitForm() {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name, phone, checkIn, checkOut, guests })
+        body: JSON.stringify({name, phone, checkIn, checkOut, guests })
     })
     .then(response => {
         if (response.ok) {
@@ -31,8 +30,6 @@ function submitForm() {
             alert('Booking failed❌');
         }
     })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Booking failed!');
-    });
+    .catch(error => console.error('Error:', error));
 }
+
